@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import AddLinkContainer from '../components/AddLinkContainer';
 import ExpandableAddress from '../components/ExpandableAddress'
 import { useState } from 'react'
-import { bindActionCreators } from '../../../../../Library/Caches/typescript/3.5/node_modules/redux';
+import { bindActionCreators } from 'redux';
 import { registerAccount } from '../actions/users'
 import { connect } from 'react-redux'
 
@@ -17,7 +17,6 @@ const Style = styled.div`
 margin: 2em 3em;
 `
 
-const theFounder = '0x28EF2d65f77E2F51752776c53fC341980ED746B2'
 
 function Register({ registerAccount }) {
     let [accepted, setAccepted] = useState(false)

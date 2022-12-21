@@ -12,7 +12,7 @@ const DashStyle = styled.div`
 margin: 2em 3em;
 `
 
-const theFounder = '0x28EF2d65f77E2F51752776c53fC341980ED746B2'
+const theFounder = '0x96fa4CBb4869eFdFEC0C97f1178CA02da4CFe084'
 
 function DashPage() {
     return <PageTemplate>

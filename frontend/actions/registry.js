@@ -32,6 +32,14 @@ export function loadEntry(title) {
                 toBlock: 'latest'
             }
         )
+        let allevs = await registry.getPastEvents(
+            'Put',
+            {
+                fromBlock: '0',
+                toBlock: 'latest'
+            }
+        )
+        console.dir(allevs, {depth:null});
 
         const results = evs.map(ev => {
             const { url, creator, key, time } = ev.returnValues;
@@ -100,6 +108,8 @@ import { loadUserInfo } from './users';
 export const ADD_TO_REGISTRY_PROGRESS = 'ADD_TO_REGISTRY_PROGRESS'
 
 export function addToRegistry(userId, title, url) {
+    console.dir(userId, {depth:null})
+    if (userId === null) userId = 0;
     return async (dispatch) => {
         dispatch({
             type: ADD_TO_REGISTRY_PROGRESS,
@@ -108,7 +118,7 @@ export function addToRegistry(userId, title, url) {
 
         const accounts = await web3.eth.getAccounts()
         let ev = registry.methods.put(userId, title, url).send({ from: accounts[0] })
-
+        console.dir(registry,{depth:null});
         ev.on('transactionHash', txhash => {
             dispatch({
                 type: ADD_TO_REGISTRY_PROGRESS,
